@@ -12,3 +12,7 @@
   cp -R The-Optometrists-Companion/web-build/* combined-build/path-to-expo-app
   """
   publish = "combined-build"
+
+  # Specify Node.js version
+[context.production.environment]
+  NODE_VERSION = "20.10.0" # Replace with your required Node.js version
