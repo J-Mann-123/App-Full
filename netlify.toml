@@ -6,7 +6,7 @@
   npx gatsby build && 
   cd ../The-Optometrists-Companion && 
   npm install && 
-  expo export --public-url https://your-domain.com/path-to-expo-app && 
+  expo export &&
   cd .. && 
   mkdir -p combined-build && 
   cp -R optometrists-companion-web-homepage/public/* combined-build/ && 
