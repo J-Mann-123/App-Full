@@ -1,0 +1,6 @@
+[submodule "The-Optometrists-Companion"]
+	path = The-Optometrists-Companion
+	url = https://github.com/J-Mann-123/The-Optometrists-Companion.git
+[submodule "optometrists-companion-web-homepage"]
+	path = optometrists-companion-web-homepage
+	url = https://github.com/J-Mann-123/optometrists-companion-web-homepage.git
