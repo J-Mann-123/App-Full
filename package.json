@@ -1,0 +1,15 @@
+{
+  "name": "app-full",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "expo": "^49.0.15",
+    "expo-cli": "^6.3.10"
+  }
+}
