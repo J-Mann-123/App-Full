@@ -1,16 +1,17 @@
 [build]
   command = """
-  npm install --prefix optometrists-companion-web-homepage && 
-  npm install --prefix The-Optometrists-Companion && 
-  cd optometrists-companion-web-homepage && 
-  npx gatsby build && 
-  cd ../The-Optometrists-Companion && 
-  npm install && 
+  npm cache clean --force &&
+  npm install --prefix optometrists-companion-web-homepage &&
+  npm install --prefix The-Optometrists-Companion &&
+  cd optometrists-companion-web-homepage &&
+  npx gatsby build &&
+  cd ../The-Optometrists-Companion &&
+  npm install &&
   expo export &&
-  cd .. && 
-  mkdir -p combined-build && 
-  cp -R optometrists-companion-web-homepage/public/* combined-build/ && 
-  cp -R The-Optometrists-Companion/web-build/* combined-build/path-to-expo-app
+  cd .. &&
+  mkdir -p combined-build &&
+  cp -R optometrists-companion-web-homepage/public/* combined-build/ &&
+  cp -R The-Optometrists-Companion/web-build/* combined-build/
   """
   publish = "combined-build"
 
