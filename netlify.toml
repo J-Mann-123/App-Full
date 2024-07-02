@@ -1,0 +1,3 @@
+[build]
+  command = "cd gatsby-app && gatsby build && cd ../react-native-app && npx expo export:web"
+  publish = "path-to-publish-directory"
