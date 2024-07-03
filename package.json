@@ -10,6 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "expo": "^49.0.15",
-    "expo-cli": "^6.3.10"
+    "expo-cli": "^6.3.10",
+    "expo-linking": "^5.0.2",
+    "expo-modules-autolinking": "^1.1.0",
+    "expo-router": "^2.0.15"
   }
 }
