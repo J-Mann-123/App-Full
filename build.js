@@ -13,8 +13,14 @@ const buildGatsby = () => {
 
 const combineBuilds = () => {
   console.log('Combining builds...');
+  // Ensure the directory for the Gatsby build exists
   fs.ensureDirSync('web-build/gatsby');
+  // Move the Gatsby build into the web-build directory
   fs.moveSync('public', 'web-build/gatsby', { overwrite: true });
+  // Create a directory for the Expo app within the Gatsby build
+  fs.ensureDirSync('web-build/gatsby/expo-app');
+  // Move the Expo build into the newly created directory
+  fs.moveSync('dist', 'web-build/gatsby/expo-app', { overwrite: true });
 };
 
 const runBuilds = async () => {
