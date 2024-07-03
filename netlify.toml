@@ -1,20 +1,24 @@
 [build]
   command = """
+  # Clean npm cache
   npm cache clean --force &&
+  # Install dependencies for the Gatsby project
   npm install --prefix optometrists-companion-web-homepage &&
+  # Install dependencies for the Expo project
   npm install --prefix The-Optometrists-Companion &&
+  # Build the Gatsby project
   cd optometrists-companion-web-homepage &&
   npx gatsby build &&
   cd ../The-Optometrists-Companion &&
   npm install &&
+  # Export the Expo project with a specified public URL
   expo export --public-url https://app-full.netlify.app/expo &&
   cd .. &&
+  # Create the directory for the combined build output
   mkdir -p combined-build/app-full.netlify.app/expo &&
+  # Copy the Gatsby build output
   cp -R optometrists-companion-web-homepage/public/* combined-build/ &&
+  # Copy the Expo build output
   cp -R The-Optometrists-Companion/web-build/* combined-build/app-full.netlify.app/expo/
   """
   publish = "combined-build"
-
-  # Specify Node.js version
-[context.production.environment]
-  NODE_VERSION = "20.10.0" # Replace with your required Node.js version
