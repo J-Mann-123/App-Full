@@ -7,11 +7,11 @@
   npx gatsby build &&
   cd ../The-Optometrists-Companion &&
   npm install &&
-  expo export &&
+  expo export --public-url https://app-full.netlify.app/expo &&
   cd .. &&
-  mkdir -p combined-build &&
+  mkdir -p combined-build/expo &&
   cp -R optometrists-companion-web-homepage/public/* combined-build/ &&
-  cp -R The-Optometrists-Companion/web-build/* combined-build/
+  cp -R The-Optometrists-Companion/web-build/* combined-build/expo/
   """
   publish = "combined-build"
 
