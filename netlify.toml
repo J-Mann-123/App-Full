@@ -1,13 +1,3 @@
 [build]
-  # Default build settings
-  # These settings are used if no context-specific settings are found
-  command = "echo 'No build context matched. Skipping build.'"
-  publish = "build"
-
-[context."optometrists-companion-web-homepage"]
-  command = "cd optometrists-companion-web-homepage && npm run build"
-  publish = "optometrists-companion-web-homepage/public"
-
-[context."The-Optometrists-Companion"]
-  command = "cd The-Optometrists-Companion && npm run expo-export"
-  publish = "The-Optometrists-Companion/web-build"
+  command = "node build.js"
+  publish = "web-build"
