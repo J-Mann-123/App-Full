@@ -12,6 +12,7 @@
     "expo-linking": "^5.0.2",
     "expo-modules-autolinking": "^1.1.0",
     "expo-router": "^2.0.15",
+    "metro-react-native-babel-transformer": "^0.77.0",
     "react": "^18.2.0",
     "react-native": "^0.74.3"
   }
