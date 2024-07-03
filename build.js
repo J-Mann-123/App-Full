@@ -3,7 +3,7 @@ const fs = require('fs-extra');
 
 const buildExpo = () => {
   console.log('Building Expo app...');
-  execSync('expo build:web', { stdio: 'inherit' });
+  execSync('expo export', { stdio: 'inherit' });
 };
 
 const buildGatsby = () => {
