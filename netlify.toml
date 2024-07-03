@@ -11,8 +11,8 @@
   npx gatsby build &&
   cd ../The-Optometrists-Companion &&
   npm install &&
-  # Export the Expo project with a specified public URL
-  expo export --public-url https://app-full.netlify.app/expo &&
+  # Export the Expo project
+  expo export &&
   cd .. &&
   # Create the directory for the combined build output
   mkdir -p combined-build/app-full.netlify.app/expo &&
