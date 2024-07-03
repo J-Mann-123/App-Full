@@ -1,24 +1,13 @@
 [build]
-  command = """
-  # Clean npm cache
-  npm cache clean --force &&
-  # Install dependencies for the Gatsby project
-  npm install --prefix optometrists-companion-web-homepage &&
-  # Install dependencies for the Expo project
-  npm install --prefix The-Optometrists-Companion &&
-  # Build the Gatsby project
-  cd optometrists-companion-web-homepage &&
-  npx gatsby build &&
-  cd ../The-Optometrists-Companion &&
-  npm install &&
-  # Export the Expo project
-  expo export &&
-  cd .. &&
-  # Create the directory for the combined build output
-  mkdir -p combined-build/app-full.netlify.app/expo &&
-  # Copy the Gatsby build output
-  cp -R optometrists-companion-web-homepage/public/* combined-build/ &&
-  # Copy the Expo build output
-  cp -R The-Optometrists-Companion/web-build/* combined-build/app-full.netlify.app/expo/
-  """
-  publish = "combined-build"
+  # Default build settings
+  # These settings are used if no context-specific settings are found
+  command = "echo 'No build context matched. Skipping build.'"
+  publish = "build"
+
+[context."optometrists-companion-web-homepage"]
+  command = "cd optometrists-companion-web-homepage && npm run build"
+  publish = "optometrists-companion-web-homepage/public"
+
+[context."The-Optometrists-Companion"]
+  command = "cd The-Optometrists-Companion && npm run expo-export"
+  publish = "The-Optometrists-Companion/web-build"
