@@ -1,52 +1,46 @@
-const { execSync } = require('child_process');
+const { exec } = require('child_process');
 const fs = require('fs-extra');
+const path = require('path');
+const util = require('util');
 
-const installDependencies = (cwd) => {
+const execAsync = util.promisify(exec);
+
+const installDependencies = async (cwd) => {
   console.log(`Installing dependencies in ${cwd}...`);
-  execSync('npm install', { stdio: 'inherit', cwd });
+  await execAsync('npm install', { stdio: 'inherit', cwd });
 };
 
-const buildExpo = () => {
+const buildExpo = async () => {
   console.log('Building Expo app...');
-  installDependencies('The-Optometrists-Companion');
-  execSync('npx expo export', { stdio: 'inherit', cwd: 'The-Optometrists-Companion' });
+  await installDependencies(path.join(__dirname, 'The-Optometrists-Companion'));
+  await execAsync('npx expo export', { stdio: 'inherit', cwd: path.join(__dirname, 'The-Optometrists-Companion') });
 };
 
-const buildGatsby = () => {
+const buildGatsby = async () => {
   console.log('Building Gatsby app...');
-  installDependencies('optometrists-companion-web-homepage');
-  execSync('gatsby build', { stdio: 'inherit', cwd: 'optometrists-companion-web-homepage' });
+  await installDependencies(path.join(__dirname, 'optometrists-companion-web-homepage'));
+  await execAsync('gatsby build', { stdio: 'inherit', cwd: path.join(__dirname, 'optometrists-companion-web-homepage') });
 };
 
-const combineBuilds = () => {
+const combineBuilds = async () => {
   console.log('Combining builds...');
-  // Ensure the target directory exists
-  fs.ensureDirSync('web-build/gatsby');
-  // Use fs-extra's copySync to copy the Gatsby 'public' directory, then remove the original
-  try {
-    fs.copySync('optometrists-companion-web-homepage/public', 'web-build/gatsby', { overwrite: true });
-    fs.removeSync('optometrists-companion-web-homepage/public');
-  } catch (error) {
-    console.error('Error copying Gatsby build:', error);
-    throw error; // Rethrow to be caught by the calling function
-  }
-  // Ensure the target directory for the Expo app exists within the Gatsby directory
-  fs.ensureDirSync('web-build/gatsby/expo-app');
-  // Use fs-extra's copySync to copy the Expo 'dist' directory, then remove the original
-  try {
-    fs.copySync('The-Optometrists-Companion/dist', 'web-build/gatsby/expo-app', { overwrite: true });
-    fs.removeSync('The-Optometrists-Companion/dist');
-  } catch (error) {
-    console.error('Error copying Expo build:', error);
-    throw error; // Rethrow to be caught by the calling function
-  }
+  const gatsbyTargetDir = path.join(__dirname, 'web-build/gatsby');
+  const expoTargetDir = path.join(gatsbyTargetDir, 'expo-app');
+
+  await fs.ensureDir(gatsbyTargetDir);
+  await fs.copy(path.join(__dirname, 'optometrists-companion-web-homepage/public'), gatsbyTargetDir, { overwrite: true });
+  await fs.remove(path.join(__dirname, 'optometrists-companion-web-homepage/public'));
+
+  await fs.ensureDir(expoTargetDir);
+  await fs.copy(path.join(__dirname, 'The-Optometrists-Companion/dist'), expoTargetDir, { overwrite: true });
+  await fs.remove(path.join(__dirname, 'The-Optometrists-Companion/dist'));
 };
 
 const runBuilds = async () => {
   try {
-    buildExpo();
-    buildGatsby();
-    combineBuilds();
+    await buildExpo();
+    await buildGatsby();
+    await combineBuilds();
     console.log('Build process completed.');
   } catch (error) {
     console.error('Build process failed:', error);
