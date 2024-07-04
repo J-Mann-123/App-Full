@@ -38,7 +38,6 @@
     "firebase-admin": "^12.1.1",
     "gatsby": "^5.0.1",
     "gatsby-cli": "^5.13.3",
-    "gatsby-plugin-netlify": "^5.1.1",
     "gatsby-theme-portfolio-minimal": "latest",
     "gatsby-transformer-remark": "^6.13.1",
     "hono": "^4.4.3",

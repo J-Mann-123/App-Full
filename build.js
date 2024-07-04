@@ -22,12 +22,24 @@ const combineBuilds = () => {
   console.log('Combining builds...');
   // Ensure the target directory exists
   fs.ensureDirSync('web-build/gatsby');
-  // Correct the path to the Gatsby 'public' directory
-  fs.moveSync('optometrists-companion-web-homepage/public', 'web-build/gatsby', { overwrite: true });
+  // Use fs-extra's copySync to copy the Gatsby 'public' directory, then remove the original
+  try {
+    fs.copySync('optometrists-companion-web-homepage/public', 'web-build/gatsby', { overwrite: true });
+    fs.removeSync('optometrists-companion-web-homepage/public');
+  } catch (error) {
+    console.error('Error copying Gatsby build:', error);
+    throw error; // Rethrow to be caught by the calling function
+  }
   // Ensure the target directory for the Expo app exists within the Gatsby directory
   fs.ensureDirSync('web-build/gatsby/expo-app');
-  // Correct the path to the Expo 'dist' directory
-  fs.moveSync('The-Optometrists-Companion/dist', 'web-build/gatsby/expo-app', { overwrite: true });
+  // Use fs-extra's copySync to copy the Expo 'dist' directory, then remove the original
+  try {
+    fs.copySync('The-Optometrists-Companion/dist', 'web-build/gatsby/expo-app', { overwrite: true });
+    fs.removeSync('The-Optometrists-Companion/dist');
+  } catch (error) {
+    console.error('Error copying Expo build:', error);
+    throw error; // Rethrow to be caught by the calling function
+  }
 };
 
 const runBuilds = async () => {
