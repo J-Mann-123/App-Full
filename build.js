@@ -20,10 +20,14 @@ const buildGatsby = () => {
 
 const combineBuilds = () => {
   console.log('Combining builds...');
+  // Ensure the target directory exists
   fs.ensureDirSync('web-build/gatsby');
-  fs.moveSync('public', 'web-build/gatsby', { overwrite: true });
+  // Correct the path to the Gatsby 'public' directory
+  fs.moveSync('optometrists-companion-web-homepage/public', 'web-build/gatsby', { overwrite: true });
+  // Ensure the target directory for the Expo app exists within the Gatsby directory
   fs.ensureDirSync('web-build/gatsby/expo-app');
-  fs.moveSync('dist', 'web-build/gatsby/expo-app', { overwrite: true });
+  // Correct the path to the Expo 'dist' directory
+  fs.moveSync('The-Optometrists-Companion/dist', 'web-build/gatsby/expo-app', { overwrite: true });
 };
 
 const runBuilds = async () => {
