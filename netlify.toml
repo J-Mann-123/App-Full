@@ -4,13 +4,13 @@
 
 [[redirects]]
   from = "/expo-app/*"
-  to = "/expo-app/:splat"
+  to = "/:splat"
   status = 200
   force = false
 
 [[redirects]]
   from = "/gatsby/*"
-  to = "/gatsby/:splat"
+  to = "/:splat"
   status = 200
   force = false
 
