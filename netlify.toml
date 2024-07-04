@@ -1,16 +1,10 @@
 [build]
   command = "node build.js"
-  publish = "web-build"
+  publish = "web-build/gatsby"
 
 [[redirects]]
   from = "/expo-app/*"
-  to = "/:splat"
-  status = 200
-  force = false
-
-[[redirects]]
-  from = "/gatsby/*"
-  to = "/:splat"
+  to = "/expo-app/:splat"
   status = 200
   force = false
 
