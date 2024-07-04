@@ -9,6 +9,12 @@
   force = false
 
 [[redirects]]
+  from = "/gatsby/*"
+  to = "/gatsby/:splat"
+  status = 200
+  force = false
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
