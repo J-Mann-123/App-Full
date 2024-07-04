@@ -4,7 +4,7 @@
 
 [[redirects]]
   from = "/gatsby/*"
-  to = "/index.html"
+  to = "/gatsby/:splat"
   status = 200
   force = false
 
