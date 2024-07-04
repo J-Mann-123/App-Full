@@ -24,8 +24,8 @@ const buildGatsby = async () => {
 
 const combineBuilds = async () => {
   console.log('Combining builds...');
-  const gatsbyTargetDir = path.join(__dirname, 'web-build'); // Changed from web-build/gatsby to web-build
-  const expoTargetDir = path.join(__dirname, 'web-build/expo-app'); // Ensure Expo app is placed under /expo-app
+  const gatsbyTargetDir = path.join(__dirname, 'public'); // Changed from web-build/gatsby to web-build
+  const expoTargetDir = path.join(__dirname, 'public/expo-app'); // Ensure Expo app is placed under /expo-app
 
   await fs.ensureDir(gatsbyTargetDir);
   await fs.copy(path.join(__dirname, 'optometrists-companion-web-homepage/public'), gatsbyTargetDir, { overwrite: true });
