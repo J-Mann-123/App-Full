@@ -7,9 +7,3 @@
   to = "/expo-app/:splat"
   status = 200
   force = false
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  force = true  # Ensure that the root redirects do not interfere with specific app paths
