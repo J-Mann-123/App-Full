@@ -3,6 +3,12 @@
   publish = "web-build"
 
 [[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/expo-app/*"
   to = "/expo-app/:splat"
   status = 200
