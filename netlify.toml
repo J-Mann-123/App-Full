@@ -3,6 +3,12 @@
   publish = "web-build/gatsby"
 
 [[redirects]]
+  from = "/gatsby/*"
+  to = "/index.html"
+  status = 200
+  force = false
+
+[[redirects]]
   from = "/expo-app/*"
   to = "/expo-app/:splat"
   status = 200
