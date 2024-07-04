@@ -13,7 +13,7 @@ const installDependencies = async (cwd) => {
 const buildExpo = async () => {
   console.log('Building Expo app...');
   await installDependencies(path.join(__dirname, 'The-Optometrists-Companion'));
-  await execAsync('npx expo export', { stdio: 'inherit', cwd: path.join(__dirname, 'The-Optometrists-Companion') });
+  await execAsync('npx expo export -p web', { stdio: 'inherit', cwd: path.join(__dirname, 'The-Optometrists-Companion') });
 };
 
 const buildGatsby = async () => {
