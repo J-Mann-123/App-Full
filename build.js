@@ -3,12 +3,12 @@ const fs = require('fs-extra');
 
 const buildExpo = () => {
   console.log('Building Expo app...');
-  execSync('expo export', { stdio: 'inherit' });
+  execSync('npx expo export', { stdio: 'inherit', cwd: 'The-Optometrists-Companion' });
 };
 
 const buildGatsby = () => {
   console.log('Building Gatsby app...');
-  execSync('gatsby build', { stdio: 'inherit' });
+  execSync('gatsby build', { stdio: 'inherit', cwd: 'optometrists-companion-web-homepage' });
 };
 
 const combineBuilds = () => {
